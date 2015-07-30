@@ -1,7 +1,7 @@
 import os,re,sys,os
-import csv
+import csv,time
 
-inFile=csv.reader(open('trash_urls.txt','r'))
+inFile=csv.reader(open(sys.argv[1],'r'))
 
 for line in inFile:
     print line[0]
@@ -9,4 +9,4 @@ for line in inFile:
     n=n.partition('/')[0]
     print n
     os.system('curl '+line[0]+' > TEXT/'+str(n)+'.html')
-    sys.exit(1)
+    time.sleep(0.2)
